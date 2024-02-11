@@ -6,8 +6,9 @@
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
-
-if vim.fn.has("win64") then
+if vim.loop.os_uname().sysname:find("Windows") then
+-- if vim.fn.has("win64") then
+    -- print("hihihihihihi")
     vim.opt.shell = "pwsh"
     vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
     vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"

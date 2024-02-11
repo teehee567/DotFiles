@@ -53,10 +53,11 @@ end
 vim.keymap.set('v', "<", "<gv")
 vim.keymap.set('v', ">", ">gv")
 
-if vim.fn.has("win64") then
+-- if vim.fn.has("win64") then
+if vim.loop.os_uname().sysname:find("Windows") then
     vim.keymap.set('n', '<leader>lc', '<cmd>edit ' .. os.getenv("HOMEPATH") .. '/Appdata/Local/nvim/<CR>')
 else
-    vim.keymap.set('n', '<leader>lc', '<cmd>edit ' .. os.getenv("HOME") .. '/nvim/<CR>')
+    vim.keymap.set('n', '<leader>lc', '<cmd>edit ' .. os.getenv("HOME") .. '/.config/nvim/<CR>')
 end
 
 --telescope
