@@ -77,13 +77,13 @@ local function get_dynamic_terminal_size(direction, size)
     end
 end
 
-_exec_toggle = function(opts)
+local _exec_toggle = function(opts)
     local Terminal = require("toggleterm.terminal").Terminal
     local term = Terminal:new {cmd = opts.cmd, count = opts.count, direction = opts.direction}
     term:toggle(opts.size, opts.direction)
 end
 
-add_exec = function(opts)
+local add_exec = function(opts)
     local binary = opts.cmd:match "(%S+)"
     if vim.fn.executable(binary) ~= 1 then
         print(binary)
@@ -107,7 +107,6 @@ do
     -- settings keybinds
     for i, exec in pairs(terminal.execs) do
         local direction = exec[4] or terminal.direction
-
         local opts = {
             cmd = exec[1] or vim.o.shell,
             keymap = exec[2],

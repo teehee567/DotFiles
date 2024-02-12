@@ -65,6 +65,7 @@ if vim.g.neovide then
     if vim.loop.os_uname().sysname == "Darwin" then
         vim.g.neovide_scale_factor = 1
         vim.g.neovide_fullscreen = true
+        vim.g.neovide_input_macos_alt_is_meta = true
     else
         vim.g.neovide_scale_factor = 0.6
     end
