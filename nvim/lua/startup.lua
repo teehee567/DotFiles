@@ -45,7 +45,7 @@ vim.o.termguicolors = true
 vim.cmd[[colorscheme catppuccin-macchiato]]
 
 vim.cmd('hi Delimiter guifg=#8bd5ca') -- : & 
-vim.cmd('hi @punctuation.bracket guifg=#f5bde6') -- brackets and () {}
+vim.cmd('hi @punctuation.bracket guifg=#DDDDDD') -- brackets and () {} #f5bde6
 vim.cmd('hi LineNr guifg=#8087a2')
 vim.cmd('set pumheight=11')
 
