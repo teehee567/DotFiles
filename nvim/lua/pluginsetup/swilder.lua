@@ -11,6 +11,8 @@ wilder.set_option('renderer', wilder.popupmenu_renderer({
     highlighter = wilder.basic_highlighter(),
 }))
 
+wilder.set_option('use_python_remote_plugin', 0)
+
 -- wilder.set_option('renderer', wilder.popupmenu_renderer(
 --   wilder.popupmenu_palette_theme({
 --     -- 'single', 'double', 'rounded' or 'solid'

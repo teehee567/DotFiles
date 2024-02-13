@@ -1,3 +1,4 @@
 return {
-    'wookayin/wilder.nvim',
+    'gelguy/wilder.nvim'
+    -- 'wookayin/wilder.nvim',
 }
