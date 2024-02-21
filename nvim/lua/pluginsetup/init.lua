@@ -6,6 +6,7 @@ require("pluginsetup.stoggleterm")
 require("pluginsetup.swilder")
 require("pluginsetup.swhitespace")
 require("pluginsetup.snvim_tree")
+require("pluginsetup.autopairs")
 
 
 --for transparency
