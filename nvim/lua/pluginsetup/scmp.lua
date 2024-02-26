@@ -31,8 +31,10 @@ cmp.setup {
                 else
                     cmp.confirm()
                 end
+            elseif luasnip.locally_jumpable(1) then
+                luasnip.jump(1)
             else
-            fallback()
+                fallback()
             end
         end, {"i","s","c",}),
         ['<S-Tab>'] = cmp.mapping(function(fallback)

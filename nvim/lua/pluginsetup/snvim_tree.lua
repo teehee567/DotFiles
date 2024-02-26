@@ -10,6 +10,7 @@ local function nvimtree_on_attach(bufnr)
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('open'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('vertical open tab'))
   vim.keymap.set('n', 'e', function() api.tree.expand_all() end, opts('expand all for selection'))
+  vim.keymap.set('n', 'o', api.tree.change_root_to_node, opts('open'))
 end
 
 require("nvim-tree").setup {
