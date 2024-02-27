@@ -26,7 +26,7 @@ config.color_scheme = "Catppuccin Macchiato" -- Mocha Macchiato, Frappe, Latte
 config.keys = {
 
 }
-
+config.window_close_confirmation = 'NeverPrompt'
 config.macos_window_background_blur = 20
 config.window_background_opacity = 0.7
 -- and finally, return the configuration to wezterm
