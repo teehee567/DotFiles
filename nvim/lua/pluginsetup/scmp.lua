@@ -49,11 +49,33 @@ cmp.setup {
     },
     formatting = {
         format = function(entry, vim_item)
-          vim_item.abbr = string.sub(vim_item.abbr:match("[^(]+"), 1, 20)
-          vim_item.menu = ""
+
+            --NOTE: ass dont use
+            --
+            -- local extracted = vim_item.menu
+            -- if not extracted then
+            --     extracted = " "
+            -- end
+            --
+            -- local extracted_content = string.match(extracted, "%(use%s+(.-)%)")
+            -- if extracted_content then
+            --     extracted_content = " (" .. extracted_content .. ")"
+            -- else
+            --     extracted_content = " "
+            -- end
+            -- vim_item.abbr = string.sub(vim_item.abbr:match("[^(]+"), 1, 20) .. extracted_content
+
+            vim_item.abbr = string.sub(vim_item.abbr, 1, 60)
+            vim_item.menu = ""
           return vim_item
         end
     },
+    -- formatting = {
+    --     format = function(entry, vim_item)
+    --       vim_item.abbr = string.sub(vim_item.abbr, 1, 60)
+    --       return vim_item
+    --     end
+    --   },
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
