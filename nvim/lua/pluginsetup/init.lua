@@ -7,6 +7,7 @@ require("pluginsetup.swilder")
 require("pluginsetup.swhitespace")
 require("pluginsetup.snvim_tree")
 require("pluginsetup.autopairs")
+require("pluginsetup.slualine")
 
 
 --for transparency
