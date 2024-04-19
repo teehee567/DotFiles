@@ -31,6 +31,8 @@ terminal = {
             background = "Normal"
         }
     },
+    autochdir = true,
+
     -- Add executables on the config.lua
     -- { cmd, keymap, description, direction, size }
     -- lvim.builtin.terminal.execs = {...} to overwrite

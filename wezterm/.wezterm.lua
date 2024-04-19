@@ -22,7 +22,7 @@ config.window_padding = {
 }
 config.window_close_confirmation = "NeverPrompt"
 config.color_scheme = "Catppuccin Macchiato" -- Mocha Macchiato, Frappe, Latte
-
+config.font_size = 10
 config.keys = {
 }
 
