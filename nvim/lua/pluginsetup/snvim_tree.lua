@@ -32,10 +32,10 @@ require("nvim-tree").setup {
   filters = {
     custom = {
       "^.git$",
-      "%.DS_Store$",
-      "%.lock$"
-    }
-  }
+      "^.DS_Store$",
+      "%.lock$",
+    },
+  },
   git = {
     enable = false,
     ignore = false,
