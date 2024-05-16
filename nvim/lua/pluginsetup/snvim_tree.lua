@@ -29,6 +29,13 @@ require("nvim-tree").setup {
       error = "",
     },
   },
+  filters = {
+    custom = {
+      "^.git$",
+      "%.DS_Store$",
+      "%.lock$"
+    }
+  }
   git = {
     enable = false,
     ignore = false,
@@ -39,5 +46,5 @@ require("nvim-tree").setup {
       enable = true,
     },
   },
-    on_attach = nvimtree_on_attach,
-  }
+  on_attach = nvimtree_on_attach,
+}

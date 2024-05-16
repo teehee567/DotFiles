@@ -25,7 +25,6 @@ config.window_decorations = "RESIZE"
 
 config.window_close_confirmation = "NeverPrompt"
 config.color_scheme = "Catppuccin Macchiato" -- Mocha Macchiato, Frappe, Latte
-config.font_size = 10
 config.keys = {
 }
 config.window_background_opacity = 0.8
@@ -35,6 +34,7 @@ config.window_background_opacity = 0.8
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'pwsh.exe', '-NoLogo' }
   config.color_scheme = "Catppuccin Frappe"
+  config.font_size = 10
 elseif wezterm.target_triple == 'aarch64-apple-darwin' then
   config.macos_window_background_blur = 20
 end
