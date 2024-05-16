@@ -10,6 +10,7 @@ local on_attach = function(client, bufnr)
     end
 
 
+
     local nmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
@@ -18,6 +19,8 @@ local on_attach = function(client, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
+
+    nmap('<leader>f', vim.lsp.buf.format, 'Format Buffer')
 
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -46,6 +49,11 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
+
+
+
+
+
 end
 
 
@@ -66,7 +74,7 @@ require('mason-lspconfig').setup()
 local servers = {
     clangd = {},
     -- gopls = {},
-    pyright = {},
+    pyright = {}, 
     rust_analyzer = {},
     tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -97,11 +105,11 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
     function(server_name)
-    require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-    }
+        require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+            filetypes = (servers[server_name] or {}).filetypes,
+        }
     end,
 }
