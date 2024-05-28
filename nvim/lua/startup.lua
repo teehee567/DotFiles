@@ -61,6 +61,11 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+if vim.loop.os_uname().sysname == "Darwin" then
+    vim.opt.guifont = 'FiraCode Nerd Font Mono'
+end
+
+
 if vim.g.neovide then
     if vim.loop.os_uname().sysname == "Darwin" then
         vim.g.neovide_scale_factor = 1
@@ -70,8 +75,8 @@ if vim.g.neovide then
         vim.g.neovide_scale_factor = 0.6
     end
     -- vim.g.neovide_transparency = 0.75
-    
-    vim.api.nvim_set_keymap('n', '<F11>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {}) 
+
+    vim.api.nvim_set_keymap('n', '<F11>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
     -- vim.g.neovide_cursor_vfx_mode = "railgun"
 end
 
