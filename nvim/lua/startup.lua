@@ -62,8 +62,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 if vim.loop.os_uname().sysname == "Darwin" then
-    vim.opt.guifont = 'FiraCode Nerd Font Mono'
 end
+vim.opt.guifont = 'FiraCode Nerd Font Mono'
 
 
 if vim.g.neovide then
@@ -72,7 +72,7 @@ if vim.g.neovide then
         vim.g.neovide_fullscreen = true
         vim.g.neovide_input_macos_alt_is_meta = true
     else
-        vim.g.neovide_scale_factor = 0.6
+        vim.g.neovide_scale_factor = 0.65
     end
     -- vim.g.neovide_transparency = 0.75
 
