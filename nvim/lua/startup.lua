@@ -40,13 +40,19 @@ vim.o.timeoutlen = 600
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+
+if vim.loop.os_uname().sysname == "Darwin" then
+end
+vim.opt.guifont = 'FiraCode Nerd Font Mono'
+
 -- Colours
 vim.o.termguicolors = true
 vim.cmd[[colorscheme catppuccin-macchiato]]
 
-vim.cmd('hi Delimiter guifg=#8bd5ca') -- : & 
-vim.cmd('hi @punctuation.bracket guifg=#DDDDDD') -- brackets and () {} #f5bde6
-vim.cmd('hi LineNr guifg=#8087a2')
+-- changed to be in colour config
+-- vim.cmd('hi Delimiter guifg=#8bd5ca') -- : & 
+-- vim.cmd('hi @punctuation.bracket guifg=#DDDDDD') -- brackets and () {} #f5bde6
+-- vim.cmd('hi LineNr guifg=#8087a2')
 vim.cmd('set pumheight=11')
 
 -- line numbers
@@ -61,9 +67,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-if vim.loop.os_uname().sysname == "Darwin" then
-end
-vim.opt.guifont = 'FiraCode Nerd Font Mono'
+
 
 
 if vim.g.neovide then

@@ -6,7 +6,7 @@ local on_attach = function(client, bufnr)
     -- In this case, we create a function that lets us more easily define mappings specific
     -- for LSP related items. It sets the mode, buffer and description for us each time.
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(0, true)
+        vim.lsp.inlay_hint.enable(true)
     end
 
 
