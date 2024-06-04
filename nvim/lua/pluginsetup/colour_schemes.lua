@@ -1,6 +1,7 @@
-
 require("catppuccin").setup({
     -- transparent_background = true,
+    flavour = "macchiato",
+
     no_italic = true,
     no_bold = true,
 
@@ -12,21 +13,6 @@ require("catppuccin").setup({
         }
     end,
 
-    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = {}, -- Change the style of comments
-        conditionals = {},
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-        miscs = {}, -- Uncomment to turn off hard-coded styles
-    },
     integrations = {
         cmp = true,
         gitsigns = true,

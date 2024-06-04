@@ -14,8 +14,9 @@ return {
                     utils.not_in(fn.getbufvar(buf, "&filetype"), {}) then
                     return true -- met condition(s), can save
                 end
-                return false    -- can't save
+                return false -- can't save
             end,
         })
     end,
 }
+

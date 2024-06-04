@@ -4,7 +4,15 @@ return {
 
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
-    {'folke/which-key.nvim', opts = {}},
+    { 'folke/which-key.nvim',  opts = {} },
     { 'numToStr/Comment.nvim', opts = {} },
-    "cappyzawa/trim.nvim",
+    {
+        "cappyzawa/trim.nvim",
+        config = function()
+            require('trim').setup({
+                ft_blocklist = { "markdown" },
+            })
+        end
+    }
 }
+

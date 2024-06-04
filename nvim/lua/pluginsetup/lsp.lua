@@ -50,10 +50,6 @@ local on_attach = function(client, bufnr)
         vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
 
-
-
-
-
 end
 
 
@@ -74,18 +70,20 @@ require('mason-lspconfig').setup()
 local servers = {
     clangd = {},
     -- gopls = {},
-    pyright = {}, 
-    rust_analyzer = {},
+    pyright = {},
     tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+    -- rust_analyzer = {
+    --     
+    -- }
 
     lua_ls = {
-    Lua = {
-        workspace = { checkThirdParty = false },
-        telemetry = { enable = false },
-        -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        -- diagnostics = { disable = { 'missing-fields' } },
-    },
+        Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+            -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            -- diagnostics = { disable = { 'missing-fields' } },
+        },
     },
 }
 
