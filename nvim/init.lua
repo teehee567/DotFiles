@@ -1,4 +1,3 @@
-
 -- leader
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -20,6 +19,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {})
 
+require("prestartup")
 require("pluginsetup")
 require("startup")
 

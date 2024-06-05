@@ -6,13 +6,17 @@ return {
     'tpope/vim-sleuth',
     { 'folke/which-key.nvim',  opts = {} },
     { 'numToStr/Comment.nvim', opts = {} },
-    {
-        "cappyzawa/trim.nvim",
-        config = function()
-            require('trim').setup({
-                ft_blocklist = { "markdown" },
-            })
-        end
-    }
-}
 
+
+    -- NOTE: Whitespace trimming
+    -- {
+    --     "cappyzawa/trim.nvim",
+    --     config = function()
+    --         require('trim').setup({
+    --             ft_blocklist = { "markdown" },
+    --             trim_last_line = false,
+    --             trim_first_line = false,
+    --         })
+    --     end
+    -- }
+}
