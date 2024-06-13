@@ -34,6 +34,8 @@ require("nvim-tree").setup {
       "^.git$",
       "^.DS_Store$",
       "%.lock$",
+      "^__pycache__$",
+      "^node_modules$",
     },
   },
   git = {
