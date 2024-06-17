@@ -9,7 +9,7 @@ require("catppuccin").setup({
         return {
             Delimiter = { fg = "#8bd5ca" },
             ["@punctuation.bracket"] = { fg = "#DDDDDD"},
-            LineNR = { fg = "#8087a2"},
+            LineNr = { fg = "#8087a2"},
         }
     end,
 
