@@ -54,6 +54,7 @@ vim.cmd[[colorscheme catppuccin-macchiato]]
 -- vim.cmd('hi @punctuation.bracket guifg=#DDDDDD') -- brackets and () {} #f5bde6
 -- vim.cmd('hi LineNr guifg=#8087a2')
 vim.cmd('set pumheight=11')
+vim.cmd('set splitright')
 
 -- line numbers
 vim.wo.number = true
