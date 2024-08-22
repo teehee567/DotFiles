@@ -38,6 +38,10 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 -- close with leader
 vim.keymap.set('n', '<leader>q', "<cmd>confirm q<CR>", { desc = 'close shit'})
 
+-- ctrl v / backspace on toggle term
+vim.keymap.set('t', '<C-v>', '<C-\\><C-n>"+pi')
+vim.keymap.set('t', '<C-BS>', '<C-w>')
+
 -- comment line
 vim.keymap.set('v', "<leader>/", "<Plug>(comment_toggle_linewise_visual)", { desc = "comment line"})
 

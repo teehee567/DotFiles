@@ -101,6 +101,7 @@ local add_exec = function(opts)
         end,
         {desc = opts.label, noremap = true, silent = true}
     )
+    
 end
 
 
