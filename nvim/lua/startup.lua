@@ -78,6 +78,10 @@ if vim.g.neovide then
         vim.g.neovide_input_macos_alt_is_meta = true
     else
         vim.g.neovide_scale_factor = 0.65
+        vim.g.neovide_title_background_color = string.format(
+            "%x",
+            vim.api.nvim_get_hl(0, {id=vim.api.nvim_get_hl_id_by_name("Normal")}).bg
+        )
     end
     -- vim.g.neovide_transparency = 0.75
 
