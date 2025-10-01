@@ -138,8 +138,6 @@ return {
 							},
 						}
 					end,
-					['rust_analyzer'] = function() return true end,
-
 					['eslint'] = function()
 						lspconfig.eslint.setup {
 							on_attach = on_attach,
@@ -197,10 +195,17 @@ return {
 		end,
 	},
 	{
-		'mrcjkb/rustaceanvim',
-		version = '^5',
-		ft = 'rust',
-		init = on_attach,
+	    'mrcjkb/rustaceanvim',
+		version = '^6',
+        lazy = false,
+		init = function()
+			vim.g.rustaceanvim = {
+                server = {
+                    on_attach = on_attach
+                },
+			}
+            vim.lsp.inlay_hint.enable(true)
+		end,
 	},
 	{ 'j-hui/fidget.nvim', opts = {} },
 }

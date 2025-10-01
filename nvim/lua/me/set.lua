@@ -37,6 +37,8 @@ vim.wo.signcolumn = 'number'
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.o.splitright = true
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -49,10 +51,9 @@ vim.o.termguicolors = true
 
 vim.opt.guicursor = "n-v-c-sm:block,i-ci:ver20-linkwait300-blinkoff50-blinkon200,r-cr-o:hor20"
 
-vim.cmd('set pumheight=11')
-vim.cmd('set splitright')
+-- vim.cmd('set pumheight=11')
 
--- For lualine
+-- -- For lualine
 vim.opt.cmdheight = 0
 vim.opt.showcmdloc = 'statusline'
 vim.opt.showmode = false

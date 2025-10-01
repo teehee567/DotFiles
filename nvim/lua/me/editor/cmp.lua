@@ -13,6 +13,16 @@ return {
 		local luasnip = require('luasnip')
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources(
+                { { name = 'path' } },
+                { { name = 'cmdline' } }
+            ),
+            -- this helps match commands with dashes, etc.
+            matching = { disallow_symbol_nonprefix_matching = false },
+        })
+
 		return {
 			snippet = {
 				expand = function(args) luasnip.lsp_expand(args.body) end,

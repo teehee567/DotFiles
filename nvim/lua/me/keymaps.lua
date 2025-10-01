@@ -53,11 +53,7 @@ map("n", "<leader>/", function()
 end, { desc = "Comment: Toggle linewise (current line)" })
 
 -- VISUAL: toggle comment on the selection and stay in visual mode
-map("v", "<leader>/", function()
-  -- Use the current visual mode (v/V/CTRL-V), then reselect with `gv`
-  require("Comment.api").toggle.linewise(vim.fn.visualmode())
-  vim.cmd("normal! gv")
-end, { desc = "Comment: Toggle linewise (visual, keep selection)" })
+map('x', '<leader>/', 'gcgv', { remap = true, desc = 'Comment: toggle (visual, keep selection)' })
 
 -- ===== Move line/block with Alt-j/k =====
 -- NORMAL
@@ -125,12 +121,12 @@ end
 -- map("n", "<leader>sd", tb.diagnostics, { desc = "Search: Diagnostics" })
 -- map("n", "<leader>sr", tb.resume, { desc = "Search: Resume last picker" })
 
-map("n", "<leader>/", function()
-  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-    winblend = 10,
-    previewer = false,
-  }))
-end, { desc = "Search: Fuzzy in current buffer" })
+-- map("n", "<leader>/", function()
+--   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+--     winblend = 10,
+--     previewer = false,
+--   }))
+-- end, { desc = "Search: Fuzzy in current buffer" })
 
 local function telescope_live_grep_open_files()
   require("telescope.builtin").live_grep({

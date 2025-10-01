@@ -120,4 +120,13 @@ return {
 			group = file_ext_augroup,
 		})
 	end,
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      event = "BufReadPost",
+      opts = {
+        max_lines = 3,
+        multiline_thresold = 1,
+        trim_scope = "outer",
+      }
+    }
 }

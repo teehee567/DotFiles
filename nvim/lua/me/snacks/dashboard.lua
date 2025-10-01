@@ -2,7 +2,6 @@ return {
 	'folke/snacks.nvim',
 	opts = function()
 		local utils = require('me.utils.dashboard_utils')
-		local harpoons = utils.gen_harpoon()
 		local cdir = vim.fn.getcwd()
         local banner = utils.pick_banner()
 		return {
@@ -142,15 +141,6 @@ return {
 							title = 'Recent Files',
 							icon = ' ',
 							section = 'recent_files',
-							indent = 2,
-							padding = 1,
-						},
-						{
-						title = ('⥤  Harpoons: %d active'):format(#require("harpoon"):list().items),
-						padding = 0,
-						},
-						{
-							utils.gen_file_list(harpoons, function(i) return ('h%d'):format(i) end, cdir),
 							indent = 2,
 							padding = 1,
 						},

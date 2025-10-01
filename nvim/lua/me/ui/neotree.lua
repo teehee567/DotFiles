@@ -69,7 +69,7 @@ return {
 				-- 	end
 				-- end,
 				['v'] = 'vsplit_with_window_picker',
-			    ['<cr>'] = 'open_with_window_picker',
+			    ['<cr>'] = 'open',
 			},
 		},
 		filesystem = {
@@ -118,17 +118,43 @@ return {
 				},
 			},
 		},
-		event_handlers = {
-			{
-				event = 'file_opened',
-				handler = function() require('neo-tree.command').execute { action = 'close' } end,
-			},
-		},
-	},
-	init = function()
-		vim.api.nvim_set_hl(0, 'NeoTreeFileName', { link = 'Normal' })
-		vim.api.nvim_set_hl(0, 'NeoTreeNormal', { link = 'Normal' })
-	end,
+    },
+        init = function()
+            vim.api.nvim_set_hl(0, 'NeoTreeFileName', { link = 'Normal' })
+            vim.api.nvim_set_hl(0, 'NeoTreeNormal', { link = 'Normal' })
+
+            local group = vim.api.nvim_create_augroup('MeNeoTreeAutoOpen', { clear = true })
+            vim.api.nvim_create_autocmd('VimEnter', {
+                group = group,
+                callback = function()
+                    if vim.fn.argc() ~= 1 then return end
+
+                    local target = vim.fn.argv(0)
+                    if vim.fn.isdirectory(target) == 0 then return end
+
+                    local ok, lazy = pcall(require, 'lazy')
+                    if ok then
+                            lazy.load { plugins = { 'neo-tree.nvim' } }
+                    end
+
+                    vim.schedule(function()
+                        local ok_cmd, command = pcall(require, 'neo-tree.command')
+                        if not ok_cmd then
+                            vim.cmd('Neotree focus')
+                            return
+                        end
+
+                        command.execute {
+                            action = 'show',
+                            source = 'filesystem',
+                            position = 'left',
+                            reveal = true,
+                        }
+                        command.execute { action = 'focus', source = 'filesystem', position = 'left' }
+                    end)
+                end,
+            })
+        end,
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'nvim-tree/nvim-web-devicons',

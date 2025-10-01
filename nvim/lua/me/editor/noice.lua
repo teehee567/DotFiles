@@ -24,6 +24,11 @@ return {
 				['cmp.entry.get_documentation'] = true,
 			},
 		},
+--        popupmenu = {
+--            enabled = true,
+--            backend = "cmp",
+--            kind_icons = {},
+--        },
 		presets = {
 			bottom_search = true,
 			command_palette = true,

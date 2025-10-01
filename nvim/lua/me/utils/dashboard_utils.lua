@@ -1,42 +1,8 @@
-local harpoon = require("harpoon")
 
 local plenary_path = require('plenary.path')
 local if_nil = vim.F.if_nil
 
 M = {}
-
---- @param items_number? number optional number of items to generate, default = 5
---- @return string[]
-function M.gen_harpoon(items_number)
-  items_number = if_nil(items_number, 5)
-
-  local list = harpoon:list()
-  local items = list.items or {}
-
-  local pooned = {}
-
-  local function pretty_name(p)
-    if not p or p == "" then return "(empty)" end
-    -- show a nice relative/basename; adjust to taste
-    local rel = Path.new(p):make_relative(vim.loop.cwd())
-    return rel ~= "" and rel or vim.fn.fnamemodify(p, ":t")
-  end
-
-  local n = math.min(items_number, #items)
-  for i = 1, n do
-    local it = items[i]
-    -- in harpoon2 items are tables; the path is typically in `value`
-    local path = (type(it) == "table" and (it.value or it.filename)) or it
-    pooned[i] = pretty_name(path)
-  end
-
-  -- pad with "(empty)" if there are fewer than items_number entries
-  for i = n + 1, items_number do
-    pooned[i] = "(empty)"
-  end
-
-  return pooned
-end
 
 --- @param fn string
 --- @param target_width integer

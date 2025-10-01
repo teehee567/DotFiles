@@ -5,10 +5,11 @@ return {
     ---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		dim = { enabled = true },
+		-- dim = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
 		lazygit = { enabled = true },
+        status = { enabled = false },
 	},
 	keys = {
 		{ '<leader>lg', function() Snacks.lazygit() end, desc = 'Open Lazygit' },
