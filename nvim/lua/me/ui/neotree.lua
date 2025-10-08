@@ -32,6 +32,15 @@ return {
 			)
 		end,
 		},
+        event_handlers = {
+            {
+            event = "file_opened",
+            handler = function(_file_path)
+                -- Close Neo-tree when you open a file from it
+                require("neo-tree.command").execute({ action = "close" })
+            end,
+            },
+        },
 		window = {
 			mappings = {
 				['%'] = 'add',
@@ -124,35 +133,22 @@ return {
             vim.api.nvim_set_hl(0, 'NeoTreeNormal', { link = 'Normal' })
 
             local group = vim.api.nvim_create_augroup('MeNeoTreeAutoOpen', { clear = true })
-            vim.api.nvim_create_autocmd('VimEnter', {
-                group = group,
-                callback = function()
-                    if vim.fn.argc() ~= 1 then return end
-
-                    local target = vim.fn.argv(0)
-                    if vim.fn.isdirectory(target) == 0 then return end
-
-                    local ok, lazy = pcall(require, 'lazy')
-                    if ok then
-                            lazy.load { plugins = { 'neo-tree.nvim' } }
-                    end
-
-                    vim.schedule(function()
-                        local ok_cmd, command = pcall(require, 'neo-tree.command')
-                        if not ok_cmd then
-                            vim.cmd('Neotree focus')
-                            return
-                        end
-
-                        command.execute {
-                            action = 'show',
-                            source = 'filesystem',
-                            position = 'left',
-                            reveal = true,
-                        }
-                        command.execute { action = 'focus', source = 'filesystem', position = 'left' }
-                    end)
-                end,
+            vim.api.nvim_create_autocmd("VimEnter", {
+              group = vim.api.nvim_create_augroup("NeoTreeAutoOpen", { clear = true }),
+              callback = function(args)
+                local is_dir = args.file ~= "" and vim.fn.isdirectory(args.file) == 1
+                if is_dir then
+                  vim.cmd.cd(args.file)
+                  vim.cmd.enew()
+                  require("neo-tree.command").execute({
+                    source = "filesystem",
+                    position = "left",
+                    reveal = false,
+                    dir = vim.loop.cwd(),
+                  })
+                  return
+                end
+              end,
             })
         end,
 	dependencies = {

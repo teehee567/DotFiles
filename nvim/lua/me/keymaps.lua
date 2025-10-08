@@ -128,13 +128,12 @@ end
 --   }))
 -- end, { desc = "Search: Fuzzy in current buffer" })
 
-local function telescope_live_grep_open_files()
-  require("telescope.builtin").live_grep({
-    grep_open_files = true,
-    prompt_title = "Live Grep in Open Files",
-  })
-end
-map("n", "<leader>s/", telescope_live_grep_open_files, { desc = "Search: In Open Files" })
+-- local function telescope_live_grep_open_files()
+--   require("telescope.builtin").live_grep({
+--     grep_open_files = true,
+--     prompt_title = "Live Grep in Open Files",
+--   })
+-- end
 
 -- ===== Diagnostic float on current line =====
 -- local function dialogfloat()

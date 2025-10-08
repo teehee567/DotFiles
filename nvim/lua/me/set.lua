@@ -49,7 +49,7 @@ vim.o.updatetime = 50
 vim.o.termguicolors = true
 -- vim.cmd[[colorscheme catppuccin-macchiato]]
 
-vim.opt.guicursor = "n-v-c-sm:block,i-ci:ver20-linkwait300-blinkoff50-blinkon200,r-cr-o:hor20"
+vim.opt.guicursor = "n-v-c-sm:block,i-ci:ver20-blinkwait300-blinkon500-blinkoff500,r-cr-o:hor20"
 
 -- vim.cmd('set pumheight=11')
 
