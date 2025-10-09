@@ -21,7 +21,7 @@ return {
     -- end,
     custom_highlights = function(C)
       return {
-        CursorLineNr = { fg = C.peach, bold = false },
+        CursorLineNr = { fg = C.lavender, bold = true },
         LineNr = { fg = C.subtext1 },
       }
     end,

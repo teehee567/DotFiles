@@ -14,12 +14,32 @@ return {
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup.cmdline(':', {
-            mapping = cmp.mapping.preset.cmdline(),
+            mapping = (function()
+                local cmdline_mapping = cmp.mapping.preset.cmdline()
+                cmdline_mapping['<Tab>'] = cmp.mapping(function()
+                    if cmp.visible() then
+                        if not cmp.get_selected_entry() then
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                        end
+                        cmp.confirm({ select = true })
+                    else
+                        cmp.complete()
+                    end
+                end, { 'c' })
+                cmdline_mapping['<S-Tab>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                    else
+                        fallback()
+                    end
+                end, { 'c' })
+                return cmdline_mapping
+            end)(),
             sources = cmp.config.sources(
                 { { name = 'path' } },
                 { { name = 'cmdline' } }
             ),
-            -- this helps match commands with dashes, etc.
+
             matching = { disallow_symbol_nonprefix_matching = false },
         })
 
@@ -65,21 +85,21 @@ return {
 					end
 				end),
 
-				["<Tab>"] = cmp.mapping(function(fallback)
-					-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
-					if cmp.visible() then
-						local entry = cmp.get_selected_entry()
-						if not entry then
-							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-						else
-							cmp.confirm()
-						end
-					elseif luasnip.locally_jumpable(1) then
-						luasnip.jump(1)
-					else
-						fallback()
-					end
-				end, {"i","s","c",}),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        local entry = cmp.get_selected_entry()
+                        if entry then
+                            cmp.confirm({ select = false })
+                            return
+                        end
+                    end
+
+                    if luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end, { 'i', 's', 'c' }),
 
 				['<S-Tab>'] = cmp.mapping(function(fallback)
 					if luasnip.locally_jumpable(-1) then
