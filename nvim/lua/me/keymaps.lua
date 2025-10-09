@@ -11,7 +11,10 @@ map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>zz", { noremap = true, sile
 -- map("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "LSP: Code Action" })
 
 -- ===== Clear search =====
-map("n", "<leader>h", "<cmd>nohlsearch<CR>", { noremap = true, desc = "Search: Clear highlights" })
+map("n", "<leader>h", function()
+  vim.cmd.nohlsearch()
+  vim.api.nvim_echo({ { "" } }, false, {})
+end, { desc = "Search: Clear highlights", silent = true })
 
 -- ===== Better window movement =====
 map("n", "<C-h>", "<C-w>h", { desc = "Window: Left" })

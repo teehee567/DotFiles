@@ -27,12 +27,12 @@ vim.opt.wrap = false
 
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.wo.signcolumn = 'number'
+vim.opt.signcolumn = 'yes'
 
 vim.o.ignorecase = true
 vim.o.smartcase = true

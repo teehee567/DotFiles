@@ -59,7 +59,7 @@ return {
 			'<leader>hd',
 			function() require('gitsigns').diffthis() end,
 			desc = 'Diff against current revision',
-            mode = 'n',
+	           mode = 'n',
 		},
 		{
 			'<leader>hD',

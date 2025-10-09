@@ -2,8 +2,7 @@ return {
   "Pocco81/auto-save.nvim",
   config = function()
     require("auto-save").setup({
-    execution_message = { enabled = false },
-    -- Optional: fewer triggers + debounce reduces races
+    execution_message = { message = function() return "" end },
     trigger_events = { "InsertLeave", "TextChanged" },
     debounce_delay = 1000,
 
@@ -30,11 +29,11 @@ return {
         -- 4) exclude UI/special filetypes that often race
         local ft = (vim.bo[buf] or {}).filetype
         local exclude_ft = {
-        ["neo-tree"] = true, ["neo-tree-popup"] = true, ["NvimTree"] = true,
-        harpoon = true, help = true, qf = true, trouble = true, Outline = true,
-        TelescopePrompt = true, noice = true, notify = true, spectre_panel = true,
-        terminal = true, toggleterm = true, ["dap-repl"] = true,
-        gitcommit = true, gitrebase = true,
+            ["neo-tree"] = true, ["neo-tree-popup"] = true, ["NvimTree"] = true,
+            harpoon = true, help = true, qf = true, trouble = true, Outline = true,
+            TelescopePrompt = true, noice = true, notify = true, spectre_panel = true,
+            terminal = true, toggleterm = true, ["dap-repl"] = true,
+            gitcommit = true, gitrebase = true,
         }
         if exclude_ft[ft] then return false end
 

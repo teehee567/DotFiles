@@ -19,11 +19,15 @@ return {
     --     NormalNC     = { bg = "NONE" },
     --   }
     -- end,
+    custom_highlights = function(C)
+      return {
+        CursorLineNr = { fg = C.peach, bold = false },
+        LineNr = { fg = C.subtext1 },
+      }
+    end,
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
-  end,
-  init = function()
     vim.cmd.colorscheme("catppuccin")
   end,
 }
