@@ -14,7 +14,7 @@ map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>zz", { noremap = true, sile
 map("n", "<leader>h", function()
   vim.cmd.nohlsearch()
   vim.api.nvim_echo({ { "" } }, false, {})
-end, { desc = "Search: Clear highlights", silent = true })
+end, { desc = "Search: Clear highlights", silent = true, nowait = true })
 
 -- ===== Better window movement =====
 map("n", "<C-h>", "<C-w>h", { desc = "Window: Left" })
@@ -43,7 +43,7 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic: Previous" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic: Next" })
 
 -- ===== Quit =====
-map("n", "<leader>q", "<cmd>confirm q<CR>", { desc = "Quit: Confirm" })
+vim.keymap.set("n", "<leader>q", function() vim.cmd.quit() end, { desc = "Quit: Confirm", nowait = true, silent = true, })
 
 -- ===== Terminal quality-of-life =====
 map("t", "<C-v>", '<C-\\><C-n>"+pi', { desc = "Terminal: Paste from system clipboard" })
@@ -60,16 +60,16 @@ map('x', '<leader>/', 'gcgv', { remap = true, desc = 'Comment: toggle (visual, k
 
 -- ===== Move line/block with Alt-j/k =====
 -- NORMAL
-map({ "n" }, "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-map({ "n" }, "<A-k>", ":m .-2<CR>==", { desc = "Move line up"   })
+map({ "n" }, "<A-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true})
+map({ "n" }, "<A-k>", ":m .-2<CR>==", { desc = "Move line up", silent = true})
 
 -- INSERT (stay in insert after moving)
-map({ "i" }, "<A-j>", "<C-o>:m .+1<CR><C-o>==", { desc = "Move line down" })
-map({ "i" }, "<A-k>", "<C-o>:m .-2<CR><C-o>==", { desc = "Move line up"   })
+map({ "i" }, "<A-j>", "<C-o>:m .+1<CR><C-o>==", { desc = "Move line down", silent = true })
+map({ "i" }, "<A-k>", "<C-o>:m .-2<CR><C-o>==", { desc = "Move line up", silent = true })
 
 -- VISUAL (preserve selection)
-map({ "v" }, "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-map({ "v" }, "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+map({ "v" }, "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
+map({ "v" }, "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
 
 -- ===== Better search =====
 map("n", "n", "nzzzv", { desc = "Next search result centered" })
@@ -98,9 +98,6 @@ map("v", ">", ">gv", { desc = "Indent right (keep selection)" })
 -- ===== Misc =====
 map("n", "Q", "<nop>", { desc = "Disabled Q", silent = true })
 map("n", "U", "<nop>", { desc = "Disabled U", silent = true })
-
-map("n", "<leader>qa", ":qa!<CR>", { desc = "Quit all", silent = true })
-map("n", "<leader>qq", ":q!<CR>",  { desc = "Quit",     silent = true })
 
 -- ===== Open config quickly (platform-aware) =====
 if vim.loop.os_uname().sysname:find("Windows") then
