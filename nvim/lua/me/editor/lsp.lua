@@ -46,7 +46,6 @@ return {
 			},
 		},
 		opts = function()
-			local lspconfig = require('lspconfig')
 			local capabilities = vim.tbl_deep_extend(
 				'force',
 				{},
@@ -58,110 +57,16 @@ return {
 			return {
 				automatic_installation = false,
 				ensure_installed = {
-					'lua_ls',
+					'clangd',
 				},
 				handlers = {
-					['lua_ls'] = function()
-						lspconfig.lua_ls.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							completion = {
-								enable = true,
-								callSnippet = 'Both',
-							},
-							hint = {
-								enable = true,
-							},
-							settings = {
-								Lua = {
-									runtime = { version = 'Lua 5.1' },
-									diagnostics = {
-										globals = { 'vim', 'it', 'describe', 'before_each', 'after_each', 'string' },
-									},
-									workspace = {
-										checkThirdParty = false,
-										library = vim.api.nvim_get_runtime_file('', true),
-									},
-									telemetry = { enable = false },
-								},
-							},
-						}
-					end,
-                    ['ruff'] = function ()
-						lspconfig.ruff.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-                            root_dir = lspconfig.util.root_pattern('.git', '.python-version', 'pyproject.toml', '.venv')
-						}
-                    end,
-                    ['basedpyright'] = function ()
-						lspconfig.basedpyright.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-                            root_dir = lspconfig.util.root_pattern('.git', '.python-version', 'pyproject.toml', '.venv')
-						}
-                    end,
-					['raku_navigator'] = function()
-						lspconfig.raku_navigator.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							cmd = {
-								vim.fn.stdpath('data') .. '/mason/bin/raku-navigator',
-								'--stdio',
-							},
-						}
-					end,
-					['omnisharp'] = function()
-						lspconfig.omnisharp.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							cmd = {
-								'dotnet',
-								vim.fn.stdpath('data') .. '/mason/packages/omnisharp/libexec/OmniSharp.dll',
-							},
-							settings = {
-								FormattingOptions = {
-									EnableEditorConfigSupport = true,
-									OrganizeImports = nil,
-								},
-								MsBuild = {
-									LoadProjectsOnDemand = nil,
-								},
-								RoslynExtensionsOptions = {
-									EnableAnalyzersSupport = nil,
-									EnableImportCompletion = nil,
-									AnalyzeOpenDocumentsOnly = nil,
-								},
-								Sdk = {
-									IncludePrereleases = true,
-								},
-							},
-						}
-					end,
-					['eslint'] = function()
-						lspconfig.eslint.setup {
-							on_attach = on_attach,
-							settings = {
-								workingDirectories = { mode = 'auto' },
-								experimental = { useFlatConfig = true },
-							},
-						}
-					end,
-					['denols'] = function()
-						lspconfig.denols.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
-						}
-					end,
-					['ts_ls'] = function()
-						lspconfig.ts_ls.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							root_dir = lspconfig.util.root_pattern('package.json'),
-							single_file_support = false,
-						}
-					end,
+                    vim.lsp.config("clangd", {
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        -- init_options = {
+                        --     semanticHighlighting = true,
+                        -- },
+                    })
 				},
 			}
 		end,
