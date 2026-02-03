@@ -109,7 +109,6 @@ The keybindings are designed to match the Neovim configuration. Leader key is `<
 |------------|--------|-------------------|
 | `Space Space` | Quick open (smart find) | `Snacks.picker.smart()` |
 | `Space ,` | Show all editors (buffers) | `Snacks.picker.buffers()` |
-| `Space /` | Find in files (grep) | `Snacks.picker.grep()` |
 | `Space :` | Command palette | `Snacks.picker.command_history()` |
 | `Space sf` | Find files | `Snacks.picker.files()` |
 | `Space sg` | Grep in project | `Snacks.picker.grep()` |

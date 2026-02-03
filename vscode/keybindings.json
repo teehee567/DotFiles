@@ -2,12 +2,10 @@
   // ===== Scrolling (center after move, like <C-d>zz and <C-u>zz) =====
   // Note: VSCode Vim extension handles this natively with vim.normalModeKeyBindingsNonRecursive in settings
 
-  // ===== Clear Search Highlights (<leader>h) =====
-  {
-    "key": "space h",
-    "command": "extension.vim_escape",
-    "when": "editorTextFocus && vim.mode == 'Normal'"
-  },
+  // ===== Clear Search Highlights =====
+  // Note: In nvim, <leader>h clears highlights, but this conflicts with <leader>h1-9 harpoon keys.
+  // In VS Code, use :noh or Escape to clear search highlights, or use the command palette.
+  // The vim extension handles this with the "vim.hlsearch" setting.
 
   // ===== Window Movement (Ctrl+h/j/k/l) =====
   {
@@ -44,12 +42,12 @@
   },
   {
     "key": "ctrl+left",
-    "command": "workbench.action.increaseViewWidth",
+    "command": "workbench.action.decreaseViewWidth",
     "when": "editorTextFocus"
   },
   {
     "key": "ctrl+right",
-    "command": "workbench.action.decreaseViewWidth",
+    "command": "workbench.action.increaseViewWidth",
     "when": "editorTextFocus"
   },
 
@@ -208,12 +206,8 @@
     "when": "vim.mode == 'Normal'"
   },
 
-  // Grep (<leader>/)
-  {
-    "key": "space /",
-    "command": "workbench.action.findInFiles",
-    "when": "vim.mode == 'Normal' && !editorTextFocus"
-  },
+  // Note: In nvim config, <leader>/ is used for comment toggle (keymaps.lua takes precedence over picker.lua)
+  // Grep is available via <leader>sg below
 
   // Command History (<leader>:)
   {
