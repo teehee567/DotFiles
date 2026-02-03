@@ -52,15 +52,16 @@
   },
 
   // ===== File Explorer Toggle (<leader>e) =====
+  // Focus into the explorer so you can navigate with j/k keys
   {
     "key": "space e",
-    "command": "workbench.view.explorer",
+    "command": "workbench.files.action.focusFilesExplorer",
     "when": "vim.mode == 'Normal' && editorTextFocus"
   },
   {
     "key": "space e",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "sideBarVisible && explorerViewletVisible"
+    "when": "sideBarVisible && explorerViewletVisible && !editorTextFocus"
   },
 
   // ===== Quit (<leader>q) =====
