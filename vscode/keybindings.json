@@ -1,0 +1,571 @@
+[
+  // ===== Scrolling (center after move, like <C-d>zz and <C-u>zz) =====
+  // Note: VSCode Vim extension handles this natively with vim.normalModeKeyBindingsNonRecursive in settings
+
+  // ===== Clear Search Highlights (<leader>h) =====
+  {
+    "key": "space h",
+    "command": "extension.vim_escape",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // ===== Window Movement (Ctrl+h/j/k/l) =====
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorTextFocus"
+  },
+
+  // ===== Window Resize (Ctrl+Arrow Keys) =====
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.decreaseViewHeight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.increaseViewHeight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.increaseViewWidth",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.decreaseViewWidth",
+    "when": "editorTextFocus"
+  },
+
+  // ===== File Explorer Toggle (<leader>e) =====
+  {
+    "key": "space e",
+    "command": "workbench.view.explorer",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarVisible && explorerViewletVisible"
+  },
+
+  // ===== Quit (<leader>q) =====
+  {
+    "key": "space q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // ===== Comment Toggle (<leader>/) =====
+  {
+    "key": "space /",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space /",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && vim.mode == 'Visual'"
+  },
+
+  // ===== Move Lines (Alt+j/k) =====
+  {
+    "key": "alt+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // ===== Format Code (<leader>f) =====
+  {
+    "key": "space f",
+    "command": "editor.action.formatDocument",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space f",
+    "command": "editor.action.formatSelection",
+    "when": "editorTextFocus && vim.mode == 'Visual'"
+  },
+
+  // ===== LSP Actions =====
+  // Code Actions (<leader>.)
+  {
+    "key": "space .",
+    "command": "editor.action.quickFix",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Hover (<leader>k)
+  {
+    "key": "space k",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Rename (<leader>rn)
+  {
+    "key": "space r n",
+    "command": "editor.action.rename",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Signature Help (Ctrl+s in insert mode)
+  {
+    "key": "ctrl+s",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorTextFocus && vim.mode == 'Insert'"
+  },
+
+  // Diagnostic Float (<leader>l)
+  {
+    "key": "space l",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // ===== Diagnostic Navigation ([e and ]e) =====
+  {
+    "key": "[ e",
+    "command": "editor.action.marker.prev",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "] e",
+    "command": "editor.action.marker.next",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "[ d",
+    "command": "editor.action.marker.prev",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "] d",
+    "command": "editor.action.marker.next",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // ===== Go to Definition (gd) - handled by vim extension, but adding explicit =====
+  {
+    "key": "g d",
+    "command": "editor.action.revealDefinition",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "g D",
+    "command": "editor.action.revealDeclaration",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "g r",
+    "command": "editor.action.goToReferences",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "g I",
+    "command": "editor.action.goToImplementation",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "g y",
+    "command": "editor.action.goToTypeDefinition",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // ===== Search & Find (Snacks Picker equivalents) =====
+  // Smart Find (<leader><space>)
+  {
+    "key": "space space",
+    "command": "workbench.action.quickOpen",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Buffers (<leader>,)
+  {
+    "key": "space ,",
+    "command": "workbench.action.showAllEditors",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Grep (<leader>/)
+  {
+    "key": "space /",
+    "command": "workbench.action.findInFiles",
+    "when": "vim.mode == 'Normal' && !editorTextFocus"
+  },
+
+  // Command History (<leader>:)
+  {
+    "key": "space :",
+    "command": "workbench.action.showCommands",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Git Commands (like gitsigns) =====
+  // Git Status (<leader>gs)
+  {
+    "key": "space g s",
+    "command": "workbench.view.scm",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Git Diff (<leader>gd)
+  {
+    "key": "space g d",
+    "command": "git.openChange",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Git Blame (<leader>hb)
+  {
+    "key": "space h b",
+    "command": "gitlens.toggleLineBlame",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Toggle Git Blame (<leader>tb)
+  {
+    "key": "space t b",
+    "command": "gitlens.toggleFileBlame",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Stage Hunk (<leader>hs)
+  {
+    "key": "space h s",
+    "command": "git.stageSelectedRanges",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Reset Hunk (<leader>hr)
+  {
+    "key": "space h r",
+    "command": "git.revertSelectedRanges",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Next Hunk (]h)
+  {
+    "key": "] h",
+    "command": "workbench.action.editor.nextChange",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Previous Hunk ([h)
+  {
+    "key": "[ h",
+    "command": "workbench.action.editor.previousChange",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // ===== Search Commands =====
+  // Grep Word (<leader>sw)
+  {
+    "key": "space s w",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Search Diagnostics (<leader>sd)
+  {
+    "key": "space s d",
+    "command": "workbench.actions.view.problems",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Search Symbols (<leader>ss)
+  {
+    "key": "space s s",
+    "command": "workbench.action.gotoSymbol",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Search Workspace Symbols (<leader>sS)
+  {
+    "key": "space s shift+s",
+    "command": "workbench.action.showAllSymbols",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Search Files (<leader>sf)
+  {
+    "key": "space s f",
+    "command": "workbench.action.quickOpen",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Search Grep (<leader>sg)
+  {
+    "key": "space s g",
+    "command": "workbench.action.findInFiles",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Search Help (<leader>sh)
+  {
+    "key": "space s h",
+    "command": "workbench.action.openDocumentationUrl",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Search Keymaps (<leader>sk)
+  {
+    "key": "space s k",
+    "command": "workbench.action.openGlobalKeybindings",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Search Marks (<leader>sm)
+  {
+    "key": "space s m",
+    "command": "workbench.action.showAllSymbols",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Resume Search (<leader>sR)
+  {
+    "key": "space s shift+r",
+    "command": "search.action.focusSearchList",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Undo Tree (<leader>ut) =====
+  {
+    "key": "space u t",
+    "command": "timeline.focus",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Toggle Commands (Snacks toggles) =====
+  // Toggle Spell (<leader>us)
+  {
+    "key": "space u s",
+    "command": "cSpell.toggleEnableSpellChecker",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Toggle Word Wrap (<leader>uw)
+  {
+    "key": "space u w",
+    "command": "editor.action.toggleWordWrap",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Toggle Line Numbers (<leader>ul)
+  {
+    "key": "space u l",
+    "command": "settings.cycle.lineNumbers",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Toggle Inlay Hints (<leader>uh)
+  {
+    "key": "space u h",
+    "command": "editor.inlayHints.toggle",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Toggle Indent Guides (<leader>ug)
+  {
+    "key": "space u g",
+    "command": "editor.action.toggleRenderWhitespace",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Colorscheme Picker (<leader>uC) =====
+  {
+    "key": "space u shift+c",
+    "command": "workbench.action.selectTheme",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Config Edit (<leader>lc) =====
+  {
+    "key": "space l c",
+    "command": "workbench.action.openSettingsJson",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Config File Finder (<leader>cf) =====
+  {
+    "key": "space c f",
+    "command": "workbench.action.openSettings",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Projects (<leader>pj) =====
+  {
+    "key": "space p j",
+    "command": "workbench.action.openRecent",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Lazygit (<leader>lg) =====
+  {
+    "key": "space l g",
+    "command": "lazygit.openLazygit",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Buffer Commands =====
+  // Buffer Find (<leader>bf)
+  {
+    "key": "space b f",
+    "command": "workbench.action.showAllEditors",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Flash/EasyMotion (gs) - handled by vim.easymotion in settings =====
+
+  // ===== Harpoon-like Quick File Access =====
+  // Note: VS Code doesn't have native harpoon, but we can use bookmarks
+  // Add to Harpoon (<leader>a) - using bookmarks
+  {
+    "key": "space a",
+    "command": "bookmarks.toggle",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Harpoon List (Ctrl+e)
+  {
+    "key": "ctrl+e",
+    "command": "bookmarks.listFromAllFiles",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Harpoon 1-9 (<leader>h1 - <leader>h9) - using numbered bookmarks
+  {
+    "key": "space h 1",
+    "command": "numberedBookmarks.jumpToBookmark1",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 2",
+    "command": "numberedBookmarks.jumpToBookmark2",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 3",
+    "command": "numberedBookmarks.jumpToBookmark3",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 4",
+    "command": "numberedBookmarks.jumpToBookmark4",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 5",
+    "command": "numberedBookmarks.jumpToBookmark5",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 6",
+    "command": "numberedBookmarks.jumpToBookmark6",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 7",
+    "command": "numberedBookmarks.jumpToBookmark7",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 8",
+    "command": "numberedBookmarks.jumpToBookmark8",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space h 9",
+    "command": "numberedBookmarks.jumpToBookmark9",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Clear Harpoons (<leader>hc)
+  {
+    "key": "space h c",
+    "command": "bookmarks.clearFromAllFiles",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Which Key (<leader>?) =====
+  {
+    "key": "space ?",
+    "command": "whichkey.show",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Terminal =====
+  // Toggle Terminal
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+
+  // ===== Zen Mode =====
+  {
+    "key": "space z",
+    "command": "workbench.action.toggleZenMode",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Split Windows =====
+  {
+    "key": "space v",
+    "command": "workbench.action.splitEditor",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space s p",
+    "command": "workbench.action.splitEditorDown",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Close Window =====
+  {
+    "key": "space w q",
+    "command": "workbench.action.closeEditorsInGroup",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Notification History (<leader>n) =====
+  {
+    "key": "space n",
+    "command": "notifications.showList",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Git Branches (<leader>gb) =====
+  {
+    "key": "space g b",
+    "command": "git.checkout",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // ===== Git Log (<leader>gl) =====
+  {
+    "key": "space g l",
+    "command": "gitlens.showCommitSearch",
+    "when": "vim.mode == 'Normal'"
+  }
+]

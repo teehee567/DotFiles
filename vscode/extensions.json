@@ -1,0 +1,121 @@
+{
+  // This file contains recommended VS Code extensions to replicate the nvim configuration.
+  // Copy this to .vscode/extensions.json in your project, or install these extensions manually.
+  "recommendations": [
+    // ===== Core Vim Emulation =====
+    "vscodevim.vim",                      // Vim keybindings (core requirement)
+    
+    // ===== Theme (Catppuccin Macchiato) =====
+    "catppuccin.catppuccin-vsc",          // Catppuccin color theme
+    "catppuccin.catppuccin-vsc-icons",    // Catppuccin file icons
+
+    // ===== Language Support & LSP =====
+    "rust-lang.rust-analyzer",            // Rust support (rustaceanvim equivalent)
+    "ms-vscode.cpptools",                 // C/C++ support (clangd equivalent)
+    "sumneko.lua",                        // Lua language server
+    "ms-python.python",                   // Python support
+    "ms-python.vscode-pylance",           // Python IntelliSense
+    "charliermarsh.ruff",                 // Python linter/formatter (ruff)
+    "golang.go",                          // Go support
+    "james-yu.latex-workshop",            // LaTeX support
+    "redhat.java",                        // Java support
+    "vscjava.vscode-java-pack",           // Java extension pack
+    "elm-tooling.elm-ls-vscode",          // Elm support
+    "nwolverson.ide-purescript",          // PureScript support
+    "felixfbecker.php-intellisense",      // PHP support
+    "rebornix.ruby",                      // Ruby support
+
+    // ===== Treesitter Equivalent (Syntax Highlighting) =====
+    // VS Code uses TextMate grammars and semantic tokens by default
+    // These extensions enhance syntax highlighting
+    "evgeniypeshkov.syntax-highlighter",  // Enhanced syntax highlighting
+
+    // ===== Git Integration (gitsigns.nvim equivalent) =====
+    "eamodio.gitlens",                    // Git supercharged (git blame, history, etc.)
+    "mhutchie.git-graph",                 // Git graph visualization
+    "github.vscode-pull-request-github",  // GitHub PR integration
+
+    // ===== Formatter (conform.nvim equivalent) =====
+    "esbenp.prettier-vscode",             // Prettier for JS/TS/JSON/YAML
+    "xaver.clang-format",                 // C/C++ formatting
+    "stylelint.vscode-stylelint",         // CSS/SCSS linting
+    
+    // ===== Linting =====
+    "dbaeumer.vscode-eslint",             // ESLint for JavaScript/TypeScript
+
+    // ===== Snippets (LuaSnip equivalent) =====
+    "ms-vscode.vs-keybindings",           // Enhanced keybindings
+
+    // ===== File Explorer (neo-tree equivalent) =====
+    // VS Code has built-in explorer, but these enhance it
+    "patbenatar.advanced-new-file",       // Quick file creation
+    "sleistner.vscode-fileutils",         // File utilities (rename, move, etc.)
+
+    // ===== Fuzzy Finder (Snacks picker / Telescope equivalent) =====
+    // VS Code has built-in Quick Open (Ctrl+P), but these enhance it
+    "eamodio.gitlens",                    // Git file search
+
+    // ===== Harpoon Equivalent (Quick File Navigation) =====
+    "alefragnani.bookmarks",              // Bookmarks for quick file access
+    "alefragnani.numbered-bookmarks",     // Numbered bookmarks (1-9)
+
+    // ===== Flash/EasyMotion Equivalent =====
+    // VSCodeVim has built-in easymotion support (enabled in settings)
+
+    // ===== Which Key Equivalent =====
+    "vspacecode.whichkey",                // Which-key popup for keybindings
+
+    // ===== Comments (Comment.nvim equivalent) =====
+    // VS Code has built-in comment toggle (Ctrl+/)
+
+    // ===== Surround (vim-surround equivalent) =====
+    // VSCodeVim has built-in surround support (enabled in settings)
+
+    // ===== Auto Pairs (nvim-autopairs equivalent) =====
+    // VS Code has built-in auto-closing brackets
+
+    // ===== TODO Comments (todo-comments.nvim equivalent) =====
+    "gruntfuggly.todo-tree",              // TODO comments highlighting
+    
+    // ===== Indent Guides (snacks indent equivalent) =====
+    "oderwat.indent-rainbow",             // Rainbow indent guides
+
+    // ===== Lazygit =====
+    "chaitanyashahare.lazygit",           // Lazygit integration
+
+    // ===== Color Highlighting (nvim-colorizer equivalent) =====
+    "naumovs.color-highlight",            // CSS color highlighting
+
+    // ===== Error Lens (inline diagnostics) =====
+    "usernamehw.errorlens",               // Inline error messages
+
+    // ===== Status Bar Enhancements =====
+    // VS Code has built-in status bar
+
+    // ===== Noice/Notifications Equivalent =====
+    // VS Code has built-in notifications
+
+    // ===== Undo Tree Equivalent =====
+    "codezombiech.githistory",            // Git history view
+    // Timeline view is built into VS Code
+
+    // ===== Diff View (diffview.nvim equivalent) =====
+    "mhutchie.git-graph",                 // Git graph with diff view
+
+    // ===== Project Management =====
+    "alefragnani.project-manager",        // Project manager
+    
+    // ===== Fidget/LSP Status Equivalent =====
+    // Built into VS Code
+
+    // ===== Remote Development (optional) =====
+    "ms-vscode-remote.remote-ssh",        // Remote SSH development
+    "ms-vscode-remote.remote-containers", // Dev containers
+
+    // ===== Spell Check (spell toggle equivalent) =====
+    "streetsidesoftware.code-spell-checker" // Spell checker
+  ],
+  
+  // Extensions that should not be recommended
+  "unwantedRecommendations": []
+}
