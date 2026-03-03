@@ -62,7 +62,7 @@ vim.opt.showmode = false
 if vim.g.neovide then
     if vim.loop.os_uname().sysname == "Darwin" then
         vim.g.neovide_scale_factor = 1
-        vim.g.neovide_fullscreen = true
+        vim.g.neovide_fullscreen = false
         vim.g.neovide_input_macos_option_key_is_meta = 'both'
     else
         vim.g.neovide_scale_factor = 0.65
