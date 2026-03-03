@@ -4,7 +4,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=
 
 alias nvd='neovide'
 
-export NEOVIDE_FRAME="none"
+export NEOVIDE_FRAME="transparent"
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
