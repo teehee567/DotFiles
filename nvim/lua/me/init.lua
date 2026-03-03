@@ -18,11 +18,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
-	{ import = 'me.editor' },
-  { import = 'me.math' },
-  { import = 'me.misc' },
-  { import = 'me.snacks' },
-  { import = 'me.ui' },
+    { import = 'me.editor' },
+    { import = 'me.markdown' },
+    { import = 'me.misc' },
+    { import = 'me.snacks' },
+    { import = 'me.ui' },
 }
 
 require('me.keymaps')
