@@ -34,3 +34,7 @@ brew install --cask spotify
 ```
 aerospace and raycast need setting changes
 move the stuff in .config
+
+mac settings
+make globe sign do nothing
+make repeat keys as fast as possible with lowest delay
