@@ -22,6 +22,8 @@ brew install zoxide
 brew install zsh-autocomplete
 brew install borders
 brew install ripgrep
+brew install nvm
+brew install sevenzip
 
 brew install --cask aerospace
 brew install --cask alt-tab
@@ -31,6 +33,7 @@ brew install --cask neovide-app
 brew install --cask raycast
 brew install --cask wezterm
 brew install --cask spotify
+brew install --cask visual-studio-code
 ```
 aerospace and raycast need setting changes
 move the stuff in .config
