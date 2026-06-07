@@ -65,7 +65,7 @@ if vim.g.neovide then
         vim.g.neovide_fullscreen = false
         vim.g.neovide_input_macos_option_key_is_meta = 'both'
         vim.g.neovide_opacity = 0.8
-        vim.g.neovide.window_blurred = true
+        vim.g.neovide_window_blurred = true
     else
         vim.g.neovide_scale_factor = 0.65
         -- vim.g.neovide_title_background_color = string.format(
