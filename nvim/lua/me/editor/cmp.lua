@@ -13,35 +13,92 @@ return {
 		local luasnip = require('luasnip')
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-        cmp.setup.cmdline(':', {
-            mapping = (function()
-                local cmdline_mapping = cmp.mapping.preset.cmdline()
-                cmdline_mapping['<Tab>'] = cmp.mapping(function()
-                    if cmp.visible() then
-                        if not cmp.get_selected_entry() then
-                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                        end
-                        cmp.confirm({ select = true })
-                    else
-                        cmp.complete()
-                    end
-                end, { 'c' })
-                cmdline_mapping['<S-Tab>'] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-                    else
-                        fallback()
-                    end
-                end, { 'c' })
-                return cmdline_mapping
-            end)(),
-            sources = cmp.config.sources(
-                { { name = 'path' } },
-                { { name = 'cmdline' } }
-            ),
+		local function smartcase_filter(entry, ctx)
+			local input = string.sub(ctx.cursor_before_line, entry:get_offset())
+			if input == string.lower(input) then
+				return true
+			end
 
-            matching = { disallow_symbol_nonprefix_matching = false },
-        })
+			-- nvim-cmp normally matches without regard to case. Once the input
+			-- contains a capital, only keep matches whose casing is exact.
+			for _, match in ipairs(entry.matches or {}) do
+				if match.strict_ratio ~= 1 then
+					return false
+				end
+			end
+			return true
+		end
+
+		-- getcompletion() filters command names case-sensitively before nvim-cmp
+		-- sees them. Supplying the full command list lets cmp provide smart-case
+		-- completion for built-in and user commands alike.
+		local command_source = {}
+		function command_source:get_keyword_pattern()
+			return [=[[^[:blank:]]*]=]
+		end
+
+		function command_source:complete(params, callback)
+			if not params.context.cursor_before_line:match('^[A-Za-z][A-Za-z0-9]*$') then
+				callback({ items = {}, isIncomplete = false })
+				return
+			end
+
+			local items = {}
+			for _, command in ipairs(vim.fn.getcompletion('', 'command')) do
+				items[#items + 1] = {
+					label = command,
+					kind = cmp.lsp.CompletionItemKind.Function,
+				}
+			end
+			callback({ items = items, isIncomplete = false })
+		end
+
+		cmp.register_source('smart_cmdline', command_source)
+
+		cmp.setup.cmdline(':', {
+			mapping = (function()
+				local cmdline_mapping = cmp.mapping.preset.cmdline()
+				cmdline_mapping['<Tab>'] = cmp.mapping(function()
+					if cmp.visible() then
+						if not cmp.get_selected_entry() then
+							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+						end
+						cmp.confirm({ select = true })
+					else
+						cmp.complete()
+					end
+				end, { 'c' })
+				cmdline_mapping['<S-Tab>'] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+					else
+						fallback()
+					end
+				end, { 'c' })
+				return cmdline_mapping
+			end)(),
+			sources = cmp.config.sources(
+				{
+					{ name = 'path', entry_filter = smartcase_filter },
+				},
+				{
+					{ name = 'smart_cmdline', entry_filter = smartcase_filter },
+					{
+						name = 'cmdline',
+						entry_filter = function(entry, ctx)
+							-- The smart source owns a plain first command token;
+							-- cmp-cmdline still handles ranges, modifiers and args.
+							if ctx.cursor_before_line:match('^[A-Za-z][A-Za-z0-9]*$') then
+								return false
+							end
+							return smartcase_filter(entry, ctx)
+						end,
+					},
+				}
+			),
+
+			matching = { disallow_symbol_nonprefix_matching = false },
+		})
 
 		return {
 			snippet = {
