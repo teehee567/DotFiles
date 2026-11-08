@@ -16,10 +16,6 @@
   {
     "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-up": [
         "action::Sequence",
         [
@@ -136,9 +132,6 @@
       "space h p": "editor::ToggleSelectedDiffHunks",
       "space h b": "editor::BlameHover",
       "space t b": "git::Blame",
-      "space g b": "branches::OpenRecent",
-      "space g s": "git_panel::ToggleFocus",
-      "space g d": "git::Diff",
       "space h d": "git::Diff",
       "space a": "agent::ToggleFocus"
     }
@@ -190,15 +183,12 @@
   {
     "context": "Editor && mode == full && vim_mode == insert && !menu",
     "bindings": {
-      "ctrl-backspace": "editor::DeleteToPreviousWordStart",
-      "ctrl-h": "editor::DeleteToPreviousWordStart"
+      "ctrl-backspace": "editor::DeleteToPreviousWordStart"
     }
   },
   {
     "context": "Editor && showing_completions",
     "bindings": {
-      "ctrl-j": "editor::ContextMenuNext",
-      "ctrl-k": "editor::ContextMenuPrevious",
       "ctrl-n": "editor::ContextMenuNext",
       "ctrl-p": "editor::ContextMenuPrevious",
       "ctrl-e": "editor::Cancel",
@@ -209,10 +199,6 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight",
       "space e": "workspace::ToggleLeftDock",
       "space space": "file_finder::Toggle",
       "h": "project_panel::CollapseSelectedEntry",
@@ -254,24 +240,6 @@
     "bindings": {
       "o": "vim::Argument",
       "m": "vim::Comment"
-    }
-  },
-  {
-    "context": "AgentPanel || AcpThread",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight"
-    }
-  },
-  {
-    "context": "(AgentPanel || AcpThread) > Editor",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight"
     }
   },
   {
@@ -411,6 +379,28 @@
     "context": "ThreadsSidebar",
     "bindings": {
       "ctrl-shift-j": "agents_sidebar::ToggleThreadHistory"
+    }
+  },
+  {
+    "context": "(Editor && vim_mode == normal && !menu) || (GitPanel && !Editor) || (ProjectPanel && not_editing) || EmptyPane",
+    "bindings": {
+      "space g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace || Dock || Editor || Terminal",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious"
     }
   }
 ]

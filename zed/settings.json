@@ -1,4 +1,7 @@
 {
+  "git_panel": {
+    "dock": "left"
+  },
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": true
