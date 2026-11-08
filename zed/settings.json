@@ -1,0 +1,103 @@
+{
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true
+  },
+  "agent": {
+    "expand_terminal_card": false,
+    "threads_sidebar": {
+      "position": "right"
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+    "dock": "right"
+  },
+  "vim_mode": true,
+  "agent_servers": {
+    "codex-acp": {
+      "default_config_options": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "medium",
+        "fast-mode": false
+      },
+      "type": "registry"
+    }
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 13,
+  "theme": "Neovim Catppuccin Macchiato",
+  "buffer_font_family": "FiraCode Nerd Font Mono",
+  "buffer_font_fallbacks": [
+    "Fira Code",
+    "Cascadia Code",
+    "Consolas"
+  ],
+  "buffer_line_height": "standard",
+  "relative_line_numbers": "enabled",
+  "current_line_highlight": "all",
+  "tab_size": 4,
+  "hard_tabs": false,
+  "auto_indent": "syntax_aware",
+  "soft_wrap": "none",
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "format_on_save": "off",
+  "use_smartcase_search": true,
+  "search": {
+    "case_sensitive": false,
+    "center_on_match": true
+  },
+  "cursor_shape": "bar",
+  "vim": {
+    "default_mode": "normal",
+    "toggle_relative_line_numbers": false,
+    "use_system_clipboard": "always",
+    "use_smartcase_find": false,
+    "use_regex_search": true,
+    "gdefault": false,
+    "highlight_on_yank_duration": 0,
+    "cursor_shape": {
+      "normal": "block",
+      "visual": "block",
+      "insert": "bar",
+      "replace": "underline"
+    }
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 500
+  },
+  "project_panel": {
+    "dock": "left",
+    "entry_spacing": "standard",
+    "auto_reveal_entries": true,
+    "starts_open": true
+  },
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "pwsh.exe",
+        "args": [
+          "-NoLogo"
+        ]
+      }
+    },
+    "font_family": "FiraCode Nerd Font Mono",
+    "line_height": "standard",
+    "font_size": 13
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  "command_aliases": {
+    "Format": "editor::Format"
+  },
+  "close_panel_on_toggle": true,
+  "agent_ui_font_size": 13,
+  "agent_buffer_font_size": 13,
+  "agent_ui_font_family": "FiraCode Nerd Font Mono",
+  "agent_buffer_font_family": "FiraCode Nerd Font Mono"
+}
