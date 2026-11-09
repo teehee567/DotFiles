@@ -89,7 +89,7 @@
       "shift-u": null,
       "space space": "file_finder::Toggle",
       "space ,": "tab_switcher::Toggle",
-      "space b f": "tab_switcher::Toggle",
+      "space b": "tab_switcher::OpenInActivePane",
       "space p j": "projects::OpenRecent",
       "space s g": "pane::DeploySearch",
       "space s /": "pane::DeploySearch",
@@ -181,7 +181,7 @@
     }
   },
   {
-    "context": "Editor && mode == full && vim_mode == insert && !menu",
+    "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
       "ctrl-backspace": "editor::DeleteToPreviousWordStart"
     }
@@ -360,25 +360,19 @@
   {
     "context": "(Editor && vim_mode == normal && !menu) || (ProjectPanel && not_editing) || EmptyPane || ((AgentPanel || AcpThread) && !Editor)",
     "bindings": {
-      "ctrl-shift-j": [
-        "action::Sequence",
-        [
-          "multi_workspace::FocusWorkspaceSidebar",
-          "agents_sidebar::ToggleThreadHistory"
-        ]
-      ]
+      "ctrl-shift-j": "multi_workspace::ToggleWorkspaceSidebar"
     }
   },
   {
     "context": "(ThreadsSidebar && not_searching && !Editor) || (ThreadsSidebar > Editor && vim_mode == normal && !menu)",
     "bindings": {
-      "ctrl-shift-j": "agents_sidebar::ToggleThreadHistory"
+      "ctrl-shift-j": "multi_workspace::ToggleWorkspaceSidebar"
     }
   },
   {
     "context": "ThreadsSidebar",
     "bindings": {
-      "ctrl-shift-j": "agents_sidebar::ToggleThreadHistory"
+      "ctrl-shift-j": "multi_workspace::ToggleWorkspaceSidebar"
     }
   },
   {
@@ -401,6 +395,19 @@
     "bindings": {
       "ctrl-j": "editor::ContextMenuNext",
       "ctrl-k": "editor::ContextMenuPrevious"
+    }
+  },
+  {
+    "context": "TabSwitcher || (TabSwitcher > Picker > Editor)",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "(AgentPanel || AcpThread || MessageEditor) > Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "ctrl-delete": "editor::DeleteToNextWordEnd"
     }
   }
 ]

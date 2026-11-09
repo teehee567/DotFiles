@@ -1,4 +1,7 @@
 {
+  "tab_bar": {
+    "show": false
+  },
   "git_panel": {
     "dock": "left"
   },
